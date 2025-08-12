@@ -11,3 +11,12 @@ The project uses the [Raylib](https://www.raylib.com/) library for graphics and 
 - **Language:** C++  
 - **Library:** Raylib  
 - **Purpose:** Learning game development fundamentals and practicing C++ coding
+
+---
+
+## Controls
+
+- **Start Game:** "Enter"
+- **Move Up:** "Arrow Key Up" Or "W"  
+- **Move Down:** "Arrow Key Down" Or "S"  
+- **Shoot:** "Spacebar"  
