@@ -54,3 +54,40 @@ void Renderer::KillCheck()
         }
     }
 }
+
+void Renderer::DrawGameState()
+{
+    int spacing = 1;
+    std::stringstream ss;
+    ss << "Level: " << Level::currentLevel;
+    if (Level::currentLevel >= 100)
+    {
+        if (Level::currentLevel == Level::LEVEL_WON)
+        {
+            std::string text1 = "YOU WON, CONGRATS";
+            const char* charText1 = text1.c_str();
+            Vector2 size1 = MeasureTextEx(GetFontDefault(), charText1, 30, spacing);
+            float x = (GetScreenWidth() - size1.x) / 2;
+            DrawTextEx(GetFontDefault(), charText1, Vector2{ x, 10 }, 30, spacing, WHITE);
+        }
+        if (Level::currentLevel == Level::LEVEL_LOST)
+        {
+            std::string text2 = "YOU LOST, GAME OVER";
+            const char* charText2 = text2.c_str();
+            Vector2 size2 = MeasureTextEx(GetFontDefault(), charText2, 30, spacing);
+            float x = (GetScreenWidth() - size2.x) / 2;
+            DrawTextEx(GetFontDefault(), charText2, Vector2{ x, 10 }, 30, spacing, WHITE);
+        }
+    }
+    else
+    {
+        std::string text = ss.str();
+        const char* charText = text.c_str();
+
+        Vector2 size = MeasureTextEx(GetFontDefault(), charText, 30, spacing);
+
+        float x = (GetScreenWidth() - size.x) / 2;
+
+        DrawTextEx(GetFontDefault(), charText, Vector2{ x, 10 }, 30, spacing, WHITE);
+    }
+}

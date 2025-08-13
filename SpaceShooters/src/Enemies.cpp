@@ -71,11 +71,13 @@ void Enemies::Update(float dt)
             if (enemy.x <= 60)
             {
                 gameOver = true;
-                Level::currentLevel = Level::LEVEL_1;
-                std::cout << "Game Over!" << std::endl;
+                Level::currentLevel = Level::LEVEL_LOST;
             }
         }
     }
+
+    if (gameOver && Level::currentLevel == Level::LEVEL_1)
+        gameOver = false;
 
     enemyList.erase(
         std::remove_if(enemyList.begin(), enemyList.end(),
@@ -90,29 +92,25 @@ void Enemies::Update(float dt)
             if (Level::currentLevel == Level::LEVEL_1)
             {
                 started = false;
-                std::cout << "Starting level 2!" << std::endl;
                 Level::currentLevel = Level::LEVEL_2;
                 Level::Start();
             }
             else if (Level::currentLevel == Level::LEVEL_2)
             {
                 started = false;
-                std::cout << "Starting level 3!" << std::endl;
                 Level::currentLevel = Level::LEVEL_3;
                 Level::Start();
             }
             else if (Level::currentLevel == Level::LEVEL_3)
             {
                 started = false;
-                std::cout << "Starting level 4!" << std::endl;
                 Level::currentLevel = Level::LEVEL_4;
                 Level::Start();
             }
             else if (Level::currentLevel == Level::LEVEL_4)
             {
                 started = false;
-                std::cout << "You Won Congratulations!" << std::endl;
-                Level::currentLevel = Level::LEVEL_1;
+                Level::currentLevel = Level::LEVEL_WON;
             }
         }
     }

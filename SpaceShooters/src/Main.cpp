@@ -7,10 +7,11 @@
 std::vector<Bullet> bullets;
 
 //  TODO-LIST:
-//  Game Loop (Enter to play again)
-//  UI Feedback (Current level, 
-//
-//
+//  Game Loop (Enter to play again) CHECK
+//  UI Feedback (Current level) CHECK
+//  Add Textures
+//  Add more levels
+//  Animations
 
 int main(void)
 {
@@ -20,8 +21,6 @@ int main(void)
     Player player;
 
     bool gameStarted = false;
-
-    Level::currentLevel = Level::LEVEL_1;
 
     while (!WindowShouldClose())
     {
@@ -39,9 +38,22 @@ int main(void)
         if (!gameStarted && IsKeyPressed(KEY_ENTER))
         {
             WaitTime(1);
+            Level::currentLevel = Level::LEVEL_1;
             gameStarted = true;
             Level::Start();
         }
+
+        if (Level::currentLevel == Level::LEVEL_WON && IsKeyPressed(KEY_ENTER))
+        {
+            Level::currentLevel = Level::LEVEL_1;
+            Level::Start();
+        }
+        if (Level::currentLevel == Level::LEVEL_LOST && IsKeyPressed(KEY_ENTER))
+        {
+            Level::currentLevel = Level::LEVEL_1;
+            Level::Start();
+        }
+
         if (IsKeyPressed(KEY_W))
             player.MoveUp();
         if (IsKeyPressed(KEY_S))
@@ -59,6 +71,7 @@ int main(void)
         player.Draw();
         Renderer::DrawEnemies();
         Renderer::DrawBullets(dt);
+        Renderer::DrawGameState();
 
         EndDrawing();
     }
