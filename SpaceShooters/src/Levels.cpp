@@ -41,7 +41,7 @@ void Level1()
 
 void Level2()
 {
-	int enemies = 30;
+	int enemies = 40;
 	float spawnRate = 0.7f;
 	float fireRate = 0.6f;
 	int moveSpeed = 300.0f;
@@ -50,7 +50,7 @@ void Level2()
 
 void Level3()
 {
-	int enemies = 50;
+	int enemies = 30;
 	float spawnRate = 0.35f;
 	float fireRate = 1.2f;
 	int moveSpeed = 170.0f;
@@ -59,7 +59,7 @@ void Level3()
 
 void Level4()
 {
-	int enemies = 10;
+	int enemies = 7;
 	float spawnRate = 0.4f;
 	float fireRate = 1.2f;
 	int moveSpeed = 450.0f;
