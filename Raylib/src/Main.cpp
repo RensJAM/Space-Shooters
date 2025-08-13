@@ -6,9 +6,15 @@
 
 std::vector<Bullet> bullets;
 
+//  TODO-LIST:
+//  Game Loop (Enter to play again)
+//  UI Feedback (Current level, 
+//
+//
+
 int main(void)
 {
-    InitWindow(1280, 720, "Shoot The Robots");
+    InitWindow(1280, 720, "Space Shooters");
     SetTargetFPS(120);
 
     Player player;

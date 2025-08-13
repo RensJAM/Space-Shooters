@@ -6,6 +6,7 @@
 void Level1();
 void Level2();
 void Level3();
+void Level4();
 
 int Level::currentLevel = Level::LEVEL_1;
 
@@ -20,7 +21,10 @@ void Level::Start()
 		Level2();
 		break;
 	case LEVEL_3:
-		Level2();
+		Level3();
+		break;
+	case LEVEL_4:
+		Level4();
 		break;
 	default: std::cout << "Failed to load levels!" << std::endl;
 	}
@@ -47,7 +51,17 @@ void Level2()
 void Level3()
 {
 	int enemies = 50;
-	float spawnRate = 0.3f;
+	float spawnRate = 0.35f;
 	float fireRate = 1.2f;
-	int moveSpeed = 400.0f;
+	int moveSpeed = 170.0f;
+	Enemies::Spawn(enemies, spawnRate, fireRate, moveSpeed);
+}
+
+void Level4()
+{
+	int enemies = 10;
+	float spawnRate = 0.4f;
+	float fireRate = 1.2f;
+	int moveSpeed = 450.0f;
+	Enemies::Spawn(enemies, spawnRate, fireRate, moveSpeed);
 }

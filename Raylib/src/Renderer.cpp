@@ -23,7 +23,7 @@ void Renderer::DrawBullets(float dt)
         bullets.begin(),
         bullets.end(),
         [](const Bullet& bullet) {
-            return bullet.x > 1280; // TODO: If collide with enemy (! 1280)
+            return bullet.x > 1280;
         }
     );
 

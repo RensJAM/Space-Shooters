@@ -71,7 +71,7 @@ void Enemies::Update(float dt)
             if (enemy.x <= 60)
             {
                 gameOver = true;
-                Level::currentLevel == Level::LEVEL_1;
+                Level::currentLevel = Level::LEVEL_1;
                 std::cout << "Game Over!" << std::endl;
             }
         }
@@ -83,7 +83,7 @@ void Enemies::Update(float dt)
         enemyList.end()
     );
 
-    if (!gameOver)
+    if (!gameOver && enemyList.empty())
     {
         if (enemiesRemaining == 0 && started == true)
         {
@@ -103,8 +103,16 @@ void Enemies::Update(float dt)
             }
             else if (Level::currentLevel == Level::LEVEL_3)
             {
+                started = false;
+                std::cout << "Starting level 4!" << std::endl;
+                Level::currentLevel = Level::LEVEL_4;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_4)
+            {
+                started = false;
                 std::cout << "You Won Congratulations!" << std::endl;
-                gameOver = true;
+                Level::currentLevel = Level::LEVEL_1;
             }
         }
     }
