@@ -7,11 +7,7 @@
 std::vector<Bullet> bullets;
 
 //  TODO-LIST:
-//  Game Loop (Enter to play again) CHECK
-//  UI Feedback (Current level) CHECK
-//  Add Textures
-//  Add more levels
-//  Animations
+//  Begin Game Screen
 
 int main(void)
 {
@@ -21,6 +17,9 @@ int main(void)
     Player player;
 
     bool gameStarted = false;
+
+    Texture2D bulletTexture = LoadTexture("res/textures/bullet.png");
+    Texture2D alienTexture = LoadTexture("res/textures/alien-sprite.png");
 
     while (!WindowShouldClose())
     {
@@ -69,8 +68,8 @@ int main(void)
 
         Renderer::KillCheck();
         player.Draw();
-        Renderer::DrawEnemies();
-        Renderer::DrawBullets(dt);
+        Renderer::DrawEnemies(dt, alienTexture);
+        Renderer::DrawBullets(dt, bulletTexture);
         Renderer::DrawGameState();
 
         EndDrawing();

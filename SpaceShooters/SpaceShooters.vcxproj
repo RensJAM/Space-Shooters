@@ -152,6 +152,11 @@
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Renderer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\alien-sprite.png" />
+    <Image Include="res\textures\bullet.png" />
+    <Image Include="res\textures\spaceship-sprites.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

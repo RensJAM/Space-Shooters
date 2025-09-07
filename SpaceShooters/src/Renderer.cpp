@@ -2,29 +2,53 @@
 
 double currentTime;
 
-void Renderer::DrawEnemies()
+void Renderer::DrawEnemies(float dt, Texture2D alienTexture)
 {
     currentTime = GetTime();
         for (auto& enemy : Enemies::enemyList) {
 
-		DrawRectangle(enemy.x, enemy.y, enemy.width, enemy.height, enemy.color);
+		// DrawRectangle(enemy.x, enemy.y, enemy.width, enemy.height, enemy.color);
+        DrawTexture(
+            alienTexture,
+            enemy.x - 40,
+            enemy.y - 20,
+            GREEN
+        );
 	};
 }
 
-void Renderer::DrawBullets(float dt)
+void Renderer::DrawBullets(float dt, Texture2D bulletTexture)
 {
     for (auto& bullet : bullets)
     {
-        DrawRectangle(bullet.x, bullet.y, 30, 10, GOLD);
+        Rectangle source = { 0, 0, 10, 10 };
+        Vector2 origin = { 5, 5 };
+        float scale = 2.0f;
+        float rotation = 90.0f;
+
+        Rectangle dest = {
+            bullet.x - origin.x * scale + 10,
+            bullet.y - origin.y * scale + 12.0f,
+            10 * scale,
+            10 * scale
+        };
+
+        DrawTexturePro(
+            bulletTexture,
+            source,
+            dest,
+            origin,
+            rotation,
+            GOLD
+        );
+
         bullet.x += bullet.speed * dt;
     }
 
     auto it = std::remove_if(
         bullets.begin(),
         bullets.end(),
-        [](const Bullet& bullet) {
-            return bullet.x > 1280;
-        }
+        [](const Bullet& bullet) { return bullet.x > 1280; }
     );
 
     bullets.erase(it, bullets.end());
@@ -38,7 +62,7 @@ void Renderer::KillCheck()
 
         for (int e = (int)Enemies::enemyList.size() - 1; e >= 0; e--)
         {
-            Rectangle bulletRect = { bullets[b].x, bullets[b].y, 30, 10 };
+            Rectangle bulletRect = { bullets[b].x, bullets[b].y, 5, 10 };
             Rectangle enemyRect = { Enemies::enemyList[e].x, Enemies::enemyList[e].y,
                 (float)Enemies::enemyList[e].width,
                 (float)Enemies::enemyList[e].height };

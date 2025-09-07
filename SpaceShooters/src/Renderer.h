@@ -14,8 +14,8 @@ class Renderer
 {
 public:
 
-	static void DrawEnemies();
-	static void DrawBullets(float dt);
+	static void DrawEnemies(float dt, Texture2D alienTexture);
+	static void DrawBullets(float dt, Texture2D bulletTexture);
 	static void KillCheck();
 	static void DrawGameState();
 };

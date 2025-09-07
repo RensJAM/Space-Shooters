@@ -110,6 +110,42 @@ void Enemies::Update(float dt)
             else if (Level::currentLevel == Level::LEVEL_4)
             {
                 started = false;
+                Level::currentLevel = Level::LEVEL_5;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_5)
+            {
+                started = false;
+                Level::currentLevel = Level::LEVEL_6;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_6)
+            {
+                started = false;
+                Level::currentLevel = Level::LEVEL_7;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_7)
+            {
+                started = false;
+                Level::currentLevel = Level::LEVEL_8;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_8)
+            {
+                started = false;
+                Level::currentLevel = Level::LEVEL_9;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_9)
+            {
+                started = false;
+                Level::currentLevel = Level::LEVEL_10;
+                Level::Start();
+            }
+            else if (Level::currentLevel == Level::LEVEL_10)
+            {
+                started = false;
                 Level::currentLevel = Level::LEVEL_WON;
             }
         }
